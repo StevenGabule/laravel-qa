@@ -13,6 +13,11 @@ class QuestionsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     public function __construct()
+     {
+         $this->middleware('auth', ['except' => ['index', 'show']]);
+     }
     public function index()
     {
         /* Debugging laravel query 
@@ -67,6 +72,13 @@ class QuestionsController extends Controller
      */
     public function edit(Question $question)
     {
+        // USING GATE FOR SECURITY
+        // if(\Gate::allows('update-question', $question)) {
+        //     return view("questions.edit", compact('question'));
+        // }
+        // abort(403, "Access denied");
+        
+        $this->authorize("update", $question);
         return view("questions.edit", compact('question'));
     }
 
@@ -79,6 +91,7 @@ class QuestionsController extends Controller
      */
     public function update(AskQuestionRequest $request, Question $question)
     {
+        $this->authorize("update", $question);
         $question->update($request->only('title', 'body'));
         return redirect()->route('questions.index')->with('success', 'Great, Your question has been updated.');
     }
@@ -91,7 +104,13 @@ class QuestionsController extends Controller
      */
     public function destroy(Question $question)
     {
+        $this->authorize("delete", $question);
         $question->delete();
         return redirect('/questions')->with('success', 'Your question has been deleted.');
+        //if(\Gate::allows('delete-question', $question)) {
+        //    $question->delete();
+        //    return redirect('/questions')->with('success', 'Your question has been deleted.');
+        //}
+        //abort(403, "Access denied");
     }
 }

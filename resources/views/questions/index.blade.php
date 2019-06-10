@@ -48,12 +48,14 @@
                                 </div>
                                 <p class="lead">Asked by <a href="{{ $question->user->url }}">{{ $question->user->name }}</a>
                                 <small class="text-muted">{{ $question->created_date }}</small></p>
-                                {{ str_limit($question->body, 250) }}
+                                {{ $question->excerpt(350) }}
                             </div><!-- end of media body -->
                         </div><!-- end of media -->
                         <hr>
                     @endforeach
+
                     {{ $questions->links()}}
+
                 </div><!-- end of card-body -->
             </div><!-- end of card -->
         </div><!-- end of col-md-12 -->

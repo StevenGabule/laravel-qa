@@ -1,3 +1,5 @@
+@if ($answersCount > 0)
+
 <div class="row mt-3">
 
     <div class="col-md-12">
@@ -46,11 +48,6 @@
                                 <input type="hidden" name="vote" value="-1">
                             </form>
 
-                            {{-- @include('shared._vote', [
-                                'model' => $answer
-                            ]) --}}
-
-                       
                         </div><!-- end of d flex -->
                         
                         <div class="media-body">
@@ -102,3 +99,5 @@
         </div><!-- end of card -->
     </div><!-- end of col-md-12 -->
 </div><!-- end of row -->
+
+@endif

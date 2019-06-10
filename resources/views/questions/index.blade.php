@@ -1,23 +1,36 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
+
     <div class="row justify-content-center">
+
         <div class="col-md-12">
+
             <div class="card">
+
                 <div class="card-header">
+
                     <div class="d-flex align-items-center">
+
                         <h2>All Questions</h2>   
+
                         <div class="ml-auto">
+
                             <a href="{{ route('questions.create') }}" class="btn btn-outline-secondary">Ask Question</a>
+
                         </div>
+
                     </div>
+                    
                 </div><!-- end of card header -->
+
                 <div class="card-body">
 
                     @include('layouts._messages')
-
-                    @foreach ($questions as $question)
+                    
+                    @forelse ($questions as $question)
                         <div class="media">
                             
                             <div class="d-flex flex-column counters">
@@ -52,7 +65,13 @@
                             </div><!-- end of media body -->
                         </div><!-- end of media -->
                         <hr>
-                    @endforeach
+                    @empty
+
+                    <div class="alert alert-warning">
+                        <strong>Sorry</strong>, There are no questions available right now!
+                    </div>
+                            
+                    @endforelse
 
                     {{ $questions->links()}}
 

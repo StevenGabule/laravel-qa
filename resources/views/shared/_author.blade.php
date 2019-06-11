@@ -1,4 +1,4 @@
-<span class="text-muted"> {{ $label . " " . $model->created_date }}</span>
+{{-- <span class="text-muted"> {{ $label . " " . $model->created_date }}</span>
 
     <div class="media mt-2">
 
@@ -12,4 +12,6 @@
 
     </div>
 
-</div>
+</div> --}}
+
+

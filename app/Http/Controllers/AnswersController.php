@@ -9,9 +9,14 @@ use Illuminate\Http\Request;
 class AnswersController extends Controller
 {
    
+    public function index(Question $question)
+    {
+        return $question->answers()->with('user')->simplePaginate(2);
+    }
+
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('index');
     }
 
     /**

@@ -33,13 +33,10 @@
                             @endcan
     
                             @can ('delete', $answer)
-                                <form action="{{ route('questions.answers.destroy', [$question->id, $answer->id])}}" class="d-inline" method="post">
-                                    @method('DELETE')
-                                    @csrf
-                                    <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure to delete this question?')">
-                                        Delete
-                                    </button>
-                                </form>
+                            <button @click="destroy" class="btn btn-sm btn-outline-danger">
+                                Delete
+                            </button>
+                                
                             @endcan
     
                         </div><!-- end of ml-auto -->

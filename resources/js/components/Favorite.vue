@@ -1,9 +1,7 @@
 <template>
     <a title="Click to mark as favorite question (Click again to undo)" :class="classes" @click.prevent="toggle">
         <i class="fas fa-star fa-3x"></i>
-
         <span class="favorites-count">{{ count }}</span>    
-
     </a>   
 
 </template>

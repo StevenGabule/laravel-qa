@@ -36,11 +36,11 @@
                 
                 <div class="col-4">
 
-                    @include('shared._author', [
+                    {{-- @include('shared._author', [
                         'model' => $answer,
                         'label' => 'answered'
-                    ])
-
+                    ]) --}}
+                    <user-info :model="{{ $answer }}" label="answered"></user-info>
                 </div><!-- end of col-4 -->
         </div><!-- end of row -->
     </div><!-- end of media body -->

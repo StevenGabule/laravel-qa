@@ -1,41 +1,46 @@
-
 <template>
 
-    <div class="row mt-3" v-cloak v-if="count">
+    <div>
 
-        <div class="col-md-12">
+        <div class="row mt-3" v-cloak v-if="count">
 
-            <div class="card">
+            <div class="col-md-12">
 
-                <div class="card-body">
+                <div class="card">
 
-                    <div class="card-title">
+                    <div class="card-body">
 
-                        <h2>{{ title }}</h2>
+                        <div class="card-title">
 
-                    </div>
+                            <h2>{{ title }}</h2>
 
-                    <hr>
+                        </div>
 
-                    <answer @deleted="remove(index)" v-for="(answer, index) in answers" :answer="answer" :key="answer.id"></answer>
+                        <hr>
 
-                    <div class="text-center mt-3" v-if="nextUrl">
-                        <button class="btn btn-outline-secondary" @click.prevent="fetch(nextUrl)">Load more answers</button>
-                    </div>
+                        <answer @deleted="remove(index)" v-for="(answer, index) in answers" :answer="answer" :key="answer.id"></answer>
 
-                </div><!-- end of card body -->
+                        <div class="text-center mt-3" v-if="nextUrl">
+                            <button class="btn btn-outline-secondary" @click.prevent="fetch(nextUrl)">Load more answers</button>
+                        </div>
 
-            </div><!-- end of card -->
+                    </div><!-- end of card body -->
 
-        </div><!-- end of col-md-12 -->
+                </div><!-- end of card -->
 
-    </div><!-- end of row -->
+            </div><!-- end of col-md-12 -->
+
+        </div><!-- end of row -->
+        <new-answer @created="add" :question-id="question.id"></new-answer>
+    </div>
 
 </template>
 
 
 <script>
+
 import Answer from './Answer.vue';
+import NewAnswer from './NewAnswer.vue';
 
 export default {
     props: ['question'],
@@ -53,6 +58,11 @@ export default {
     },
     
     methods: {
+        add(answer) {
+            this.answers.push(answer);
+            this.count++;
+        },
+
         remove(index) {
             this.answers.splice(index, 1);
             this.count--;
@@ -72,6 +82,6 @@ export default {
             return this.count + " " + (this.count > 1 ? 'Answers' : 'Answer'); 
         }
     },
-    components: { Answer}
+    components: { Answer, NewAnswer}
 }
 </script>

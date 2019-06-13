@@ -21,7 +21,9 @@
                         <answer @deleted="remove(index)" v-for="(answer, index) in answers" :answer="answer" :key="answer.id"></answer>
 
                         <div class="text-center mt-3" v-if="nextUrl">
+
                             <button class="btn btn-outline-secondary" @click.prevent="fetch(nextUrl)">Load more answers</button>
+                            
                         </div>
 
                     </div><!-- end of card body -->
@@ -31,7 +33,9 @@
             </div><!-- end of col-md-12 -->
 
         </div><!-- end of row -->
+
         <new-answer @created="add" :question-id="question.id"></new-answer>
+
     </div>
 
 </template>

@@ -1,12 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
-<div class="container">
-
-    <question :question="{{ $question }}"></question>
-    <answers :question="{{ $question }}"></answers> 
-    
-</div><!-- end of container -->
-
+    <div class="container">
+        <question-page :question={{ $question }}></question-page>
+    </div>
 @endsection

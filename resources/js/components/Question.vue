@@ -41,7 +41,7 @@
                         
                         <div class="d-flex align-items-center">
 
-                            <h2>{{ title}}</h2>   
+                            <h2>{{ title }}</h2>   
 
                             <div class="ml-auto">
 
@@ -104,8 +104,14 @@
 </template>
 
 <script>
+
+import Vote from './Vote.vue';
+import UserInfo from './UserInfo.vue';
+
 export default {
     props: ['question'],
+
+    components: { Vote, UserInfo },
 
     data() {
         return {
@@ -187,12 +193,8 @@ export default {
             
                     }],
                 ],
-               
             });
-           
         }
-
     }
-
 }
 </script>

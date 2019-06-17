@@ -37,7 +37,9 @@
                     @empty
 
                         <div class="alert alert-warning">
+
                             <strong>Sorry</strong>, There are no questions available right now!
+                            
                         </div>
 
                     @endforelse
@@ -45,8 +47,13 @@
                     {{ $questions->links()}}
 
                 </div><!-- end of card-body -->
+
             </div><!-- end of card -->
+
         </div><!-- end of col-md-12 -->
+
     </div><!-- end of row -->
+
 </div><!-- end of container -->
+
 @endsection

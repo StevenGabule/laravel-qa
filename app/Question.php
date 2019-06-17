@@ -18,6 +18,11 @@ class Question extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function answers()
+    {
+        return $this->hasMany(Answer::class)->orderBy('votes_count','DESC');
+    }
+
     public function setTitleAttribute($value) {
         $this->attributes['title'] = $value;
         $this->attributes['slug'] = str_slug($value);
@@ -54,10 +59,7 @@ class Question extends Model
         return clean($this->bodyHtml());
     }
 
-    public function answers()
-    {
-        return $this->hasMany(Answer::class)->orderBy('votes_count','DESC');
-    }
+    
 
     public function acceptBestAnswer(Answer $answer)
     {
